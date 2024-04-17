@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+
 import './App.css'
 
 import Header from './homepage/Header'
@@ -12,7 +12,22 @@ function App() {
   return (
     <div>
       <Header/>
-      <Navlist/>
+        <BrowserRouter>
+          <div className = "navigation">
+            <NavLink className = 'navLink' to=''>
+              Login
+            </NavLink>
+            <NavLink className = 'navLink' to='homepage'>
+              Homepage
+            </NavLink>
+            <NavLink className = 'navLink' to='stats'>
+              Stats
+            </NavLink>
+            <NavLink className = 'navLink' to='survey'>
+              Survey
+            </NavLink>
+          </div>
+        </BrowserRouter>
       <Footer/>
     </div>
   )
