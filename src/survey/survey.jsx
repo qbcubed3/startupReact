@@ -1,9 +1,66 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 export function Survey(){
     const[items, setItems] = useState([]);
-    const[newItem, setNew] = useState([]);
-    const[deleteItem, setDelete] = useState([]);
+    const[newItem, setNew] = useState('');
+    const[deleteThing, setDelete] = useState('');
+    
+    useEffect(() => {getItems();}, []);
+    
+    async function getItems(){
+        const body2 = {
+            authToken: localStorage.getItem("auth")
+        }
+        try{
+            response = await fetch('/api/survey/get', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(body2)
+            });
+        }
+        catch (error){
+            console.log(error.message);
+        }
+        const data = await response.json();
+        setItems(data.items);
+    }
 
+    async function addItem(){
+        const auth = localStorage.getItem("auth");
+        const body = {
+            authToken: auth,
+            item: newItem
+        }
+        try{
+            const response = await fetch('/api/survey/add', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(body)
+            });
+        }
+        catch{
+            return;
+        }
+        setNew('');
+    }
+
+    async function deleteItem(){
+        const body = {
+            authToken: localStorage.getItem("auth"),
+            item: deleteThing
+        }
+        try{
+            const response = await fetch('api/survey/delete', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(body),
+            });
+        }
+        catch{
+            return;
+        }
+        setDelete('');
+
+    }
 
     return(
         <div class="survey">
