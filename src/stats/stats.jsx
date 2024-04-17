@@ -1,6 +1,13 @@
 import Header from "./Header"
-export function homepage(){
+export function Stats(){
     return(
-        <Header/>
+        <div>
+            <Header/>
+            <div>
+                <p>Yo we made it to the stats page lfg</p>
+            </div>
+        </div>
     )
 }
+
+export default Stats;

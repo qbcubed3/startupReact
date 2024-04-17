@@ -1,6 +1,13 @@
 import Header from "./Header"
-export function homepage(){
+export function Main(){
     return(
-        <Header/>
+        <div>
+            <Header/>
+            <div>
+                <p>This is that big thing about how this app even works</p>
+            </div>
+        </div>
     )
 }
+
+export default Main;

@@ -1,5 +1,6 @@
 import Header from "./Header"
 import Footer from "./Footer"
+
 export function homepage(){
     return(
         <div>
@@ -35,3 +36,5 @@ export function homepage(){
         </div>
     )
 }
+
+export default homepage;

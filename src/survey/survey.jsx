@@ -1,6 +1,13 @@
 import Header from "./Header"
-export function homepage(){
+export function Survey(){
     return(
-        <Header/>
+        <div>
+            <Header/>
+            <div>
+                <p>Yo we made it to the survey  page</p>
+            </div>
+        </div>
     )
 }
+
+export default Survey;
