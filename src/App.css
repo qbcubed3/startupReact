@@ -64,7 +64,9 @@
     flex-direction: column; 
     padding: 0;
     margin: 2;
+    width: 115px;
   }
+
   .navlist li a{
     color: rgb(0, 0, 0);
     text-decoration:none;
@@ -89,17 +91,23 @@
     animation: rainbow 1.5s infinite;
   }
 
-  main{
+  .content{
     flex: 0 0 auto;
     position: relative;
     flex-direction: row;
     display: flex;
-    width: 100vw;
+    width: 93vw;
     padding-bottom: 5px;
     border-bottom: 2px solid darkolivegreen;
   }
 
-  main div{
+
+  .routes h2{
+    display: flex;
+    border-bottom: 2px solid black;
+  }
+
+  .routes{
     padding-left: 10px;
   }
 

@@ -19,6 +19,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Header/>
+        <div className = "content">
         <div className = "navigation">
           <div className = "navlist">
           <NavLink className = 'navLink' to=''>
@@ -35,11 +36,15 @@ function App() {
           </NavLink>
           </div>
         </div>
-        <Routes>
-          <Route path='/' element={<homepage/>} /> 
-          <Route path='/stats' element={<stats/>}/>
-          <Route path='survey' element={<survey/>}/>
-        </Routes>
+          <div className = "routes">
+          <Routes>
+            <Route path='/' element={<Main/>} /> 
+            <Route path='/stats' element={<Stats/>}/>
+            <Route path='/survey' element={<Survey/>}/>
+            <Route path='/homepage' element={<Homepage />} />
+            </Routes>
+          </div>
+        </div>
 
         <Footer/>
       </BrowserRouter>

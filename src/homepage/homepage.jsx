@@ -1,19 +1,8 @@
 import Header from "./Header"
 import Footer from "./Footer"
 
-export function homepage(){
+export function Homepage(){
     return(
-        <div>
-            <Header/>
-            <main>
-      <nav class = "navigation">
-        <ul class="navlist">
-          <li><a href="index.html">Login</a></li>
-          <li><a href="survey.html"> Daily Survey! </a></li>
-          <li><a href="homepage.html">Homepage</a></li>
-          <li><a href="stats.html">View your Stats</a></li>
-        </ul>
-      </nav>
       <div class="about">
         <h2>About</h2>
         <div>
@@ -31,10 +20,7 @@ export function homepage(){
             your average happiness.</p>
         </div>
       </div>
-    </main>
-            <Footer/>
-        </div>
     )
 }
 
-export default homepage;
+export default Homepage;
