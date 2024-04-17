@@ -4,7 +4,6 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import './App.css'
 
 import Header from './homepage/Header'
-import Navlist from './homepage/Navlist'
 import Footer from './homepage/Footer'
 import { Homepage } from './homepage/homepage.jsx'
 import {Main} from './main/main.jsx'

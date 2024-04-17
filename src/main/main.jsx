@@ -10,7 +10,7 @@ export function Main(){
             const response = await fetch('/api/login',{
                 method: 'POST',
                 headers: {
-                  'content-type': 'application/json'
+                  'Content-type': 'application/json; charset=UTF-8'
                 },
                 body: JSON.stringify({ username, password })
               })
@@ -26,6 +26,7 @@ export function Main(){
         }
         catch (error){
             console.error(error);
+            setCode(error.body);
         }
     }
 
@@ -38,7 +39,7 @@ export function Main(){
       <label htmlFor="password">Password:</label>
       <input type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password"/>
 
-      <button className="loginButton">
+      <button className="loginButton" onClick={Login}>
         Login/Register
       </button>
       <p id="error">{code}</p>

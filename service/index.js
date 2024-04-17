@@ -7,6 +7,8 @@ const port = 4000;
 
 app.use(express.json());
 
+app.set('trust proxy', true);
+
 app.use(express.static('public'));
 
 var apiRouter = express.Router();
