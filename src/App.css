@@ -59,7 +59,9 @@
   }
 
   .navlist{
-    list-style: none;   
+    list-style: none;  
+    display: flex;
+    flex-direction: column; 
     padding: 0;
     margin: 2;
   }
@@ -72,6 +74,18 @@
   }
 
   .navlist li a:hover{
+    animation: rainbow 1.5s infinite;
+  }
+
+  .navLink{
+    color: rgb(0, 0, 0);
+    text-decoration:none;
+    padding: 0;
+    padding-top: 10;
+    margin: 2px;
+  }
+
+  .navLink:hover{
     animation: rainbow 1.5s infinite;
   }
 

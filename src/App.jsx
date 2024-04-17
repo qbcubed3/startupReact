@@ -14,6 +14,7 @@ function App() {
       <Header/>
         <BrowserRouter>
           <div className = "navigation">
+            <div className = "navlist">
             <NavLink className = 'navLink' to=''>
               Login
             </NavLink>
@@ -26,6 +27,7 @@ function App() {
             <NavLink className = 'navLink' to='survey'>
               Survey
             </NavLink>
+            </div>
           </div>
         </BrowserRouter>
       <Footer/>
