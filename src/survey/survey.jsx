@@ -88,17 +88,18 @@ export function Survey(){
         catch{
             return;
         }
-        setDelete('');
     }
 
     async function handleAdd(){
         await addItem();
         await getItems();
+        setNew('');
     }
 
     async function handleDelete(){
         await deleteItem();
         await getItems();
+        setDelete('');
     }
 
     return(
@@ -109,11 +110,11 @@ export function Survey(){
                 {items.map((item) => (<div><input type="checkbox" id={item}/><label>{item}</label></div>))}
             </div>
             <div>
-                <input type="text" id="newItem" placeholder="Add a New Activity" onChange={(e) => setNew(e.target.value)}></input>
+                <input type="text" id="newItem" placeholder="Add a New Activity" value={newItem} onChange={(e) => setNew(e.target.value)}></input>
                 <button class="my-button" id="addNew" onClick={handleAdd}>Add</button>
             </div>
             <div>
-                <input type="text" id="deleteItem" onChange={(e) => setDelete(e.target.value)} placeholder="Delete Activity"></input>
+                <input type="text" id="deleteItem" value={deleteThing} onChange={(e) => setDelete(e.target.value)} placeholder="Delete Activity"></input>
                 <button class="my-button" id="remove" onClick={handleDelete}>Delete</button>
             </div>
             <div class="ranges">
