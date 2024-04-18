@@ -109,10 +109,17 @@ export function Survey(){
 
     async function submit(){
         const date = new Date();
-        setCheckboxes({...checkboxVals, ['happiness']: happy})
+        var newDay = {}
+        var key = "";
+        var checks = document.getElementById("checkboxes").getElementsByTagName('input');
+        for(var i = 0; i < checks.length; i++){
+            key = checks[i].id;
+            newDay[key] = checks[i].checked;
+        }
+        newDay['happiness'] = happy;
         const data = {
             auth: localStorage.getItem("auth"),
-            scores: checkboxVals
+            scores: newDay
         }
         try{
             var response = await fetch('/api/survey/answers', {
@@ -126,6 +133,10 @@ export function Survey(){
             return;
         }
         await getItems();
+    }
+
+    async function doHappy(){
+
     }
 
     return(
@@ -146,7 +157,7 @@ export function Survey(){
             </div>
             <div class="ranges">
                 <h4>On a Scale of 1-10, How Happy were you Today?</h4>
-                <input type="range" id = "happinessRange" name="happiness" min="1" max="10" step="1" value={happy}></input>
+                <input type="range" id = "happinessRange" name="happiness" min="1" max="10" step="1" value={happy} onChange={(e) => setHappy(e.target.value)}></input>
           <output id="selectedHappiness">{happy}</output>
           <br></br><br></br>
           <button class="my-button" id="submit" onClick={submit}>Submit Survey</button>
