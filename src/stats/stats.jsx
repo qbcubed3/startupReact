@@ -70,7 +70,7 @@ export function Stats() {
       body: JSON.stringify(body)
     });
     const data = await response.json();
-    const items = data.scores||[];
+    const items = data.scores;
     console.log(items);
     setRatios(items);
   }
@@ -85,7 +85,7 @@ export function Stats() {
       body: JSON.stringify(body)
     });
     const data = await response.json();
-    const questions = data.items||[];
+    const questions = data.items;
     console.log(questions);
     setLabels(questions);
   }
