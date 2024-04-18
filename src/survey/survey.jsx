@@ -3,6 +3,11 @@ export function Survey(){
     const[items, setItems] = useState([]);
     const[newItem, setNew] = useState('');
     const[deleteThing, setDelete] = useState('');
+    const[happy, setHappy] = useState(5);
+
+    const allFalse = Object.fromEntries(items.map(item => [item, false]))
+
+    const[checkboxVals, setCheckboxes] = useState(allFalse);
     
     useEffect(() => {
         getItems();
@@ -102,12 +107,34 @@ export function Survey(){
         setDelete('');
     }
 
+    async function submit(){
+        const date = new Date();
+        setCheckboxes({...checkboxVals, ['happiness']: happy})
+        const data = {
+            auth: localStorage.getItem("auth"),
+            scores: checkboxVals
+        }
+        try{
+            var response = await fetch('/api/survey/answers', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+        }
+        catch{
+            console.log("ERROR")
+            return;
+        }
+        await getItems();
+    }
+
     return(
         <div class="survey">
             <h2>Survey</h2>
             <h4>What did you do today?</h4>
             <div id="checkboxes">
-                {items.map((item) => (<div><input type="checkbox" id={item}/><label>{item}</label></div>))}
+                {items.map((item) => (<div><input type="checkbox" id={item} onChange={(e) => setCheckboxes({...checkboxVals, [item]: e.target.checked})}/>
+                <label>{item}</label></div>))}
             </div>
             <div>
                 <input type="text" id="newItem" placeholder="Add a New Activity" value={newItem} onChange={(e) => setNew(e.target.value)}></input>
@@ -119,10 +146,10 @@ export function Survey(){
             </div>
             <div class="ranges">
                 <h4>On a Scale of 1-10, How Happy were you Today?</h4>
-                <input type="range" id = "happinessRange" name="happiness" min="1" max="10" step="1" value="5"></input>
-          <output id="selectedHappiness">5</output>
+                <input type="range" id = "happinessRange" name="happiness" min="1" max="10" step="1" value={happy}></input>
+          <output id="selectedHappiness">{happy}</output>
           <br></br><br></br>
-          <button class="my-button" id="submit">Submit Survey</button>
+          <button class="my-button" id="submit" onClick={submit}>Submit Survey</button>
         </div>
       </div>
     )
