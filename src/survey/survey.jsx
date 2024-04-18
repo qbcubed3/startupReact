@@ -4,6 +4,7 @@ export function Survey(){
     const[newItem, setNew] = useState('');
     const[deleteThing, setDelete] = useState('');
     const[happy, setHappy] = useState(5);
+    const[submitted, setSubmitted] = useState('');
 
     const allFalse = Object.fromEntries(items.map(item => [item, false]))
 
@@ -133,6 +134,7 @@ export function Survey(){
             return;
         }
         await getItems();
+        setSubmitted("Survey Submitted");
     }
 
     async function doHappy(){
@@ -161,6 +163,7 @@ export function Survey(){
           <output id="selectedHappiness">{happy}</output>
           <br></br><br></br>
           <button class="my-button" id="submit" onClick={submit}>Submit Survey</button>
+          <p>{submitted}</p>
         </div>
       </div>
     )
